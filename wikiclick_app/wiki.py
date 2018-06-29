@@ -7,19 +7,19 @@ import os.path
 import datetime
 
 
-# 首页
-class MainPageHandler(web.RequestHandler):  # 逻辑处理模块
+# Main Page
+class MainPageHandler(web.RequestHandler):
 
     def get(self, *args, **kwags):
         self.render('batch.html')
 
 
-# 获取PageRank
+# Get PageRank
 class pageRank(web.RequestHandler):
 
     def get(self):
         model = WikiModel()
-        result = model.searh_realTime(minute=5, k=int(10))
+        result = model.search_traffic(minute=5, k=int(10))
         print(result)
 
         jsonresponse = [{"date": '', "rank": float(x['score']), "topic": x['curr_title']} for x in result]
@@ -31,35 +31,30 @@ class pageRank(web.RequestHandler):
 
         task = self.get_argument('task')
         date = self.get_argument('date')
-        k = self.get_argument('num')
+        num_to_show = self.get_argument('num_to_show')
 
-# k = 10
-
-        if task == 'pageRank':
+        if task == 'Historic_Page_Rank':
             model = WikiModel()
-            result = model.searh_log(date=date, k=int(k))
+            result = model.search_log(date=date, num_to_show=int(num_to_show))
             jsonresponse = [{"date":x['date'],"rank":float(x['score']),"topic":x['curr_title']} for x in result]
 
             self.render('pagerank.html', output=jsonresponse)
 
-        if task == 'realTime':
+        if task == 'Traffic_Source':
             model = WikiModel()
-            result = model.searh_realTime(minute=date, k=int(k))
-            print(result)
+            result = model.search_traffic(date=date, num_to_show=int(num_to_show),page_title=page_title)
+            jsonresponse = [{"date":x['date'],"rank":float(x['n']),"topic":x['curr_title']} for x in result]
 
-            jsonresponse = [{"date":'',"rank":float(x['score']),"topic":x['curr_title']} for x in result]
             self.render('pagerank.html', output=jsonresponse)
 
-
-
-# 设置
+# Setting
 settings = dict(
     template_path=os.path.join(os.path.dirname(__file__), "templates"),
     static_path=os.path.join(os.path.dirname(__file__), "static"),
     debug=True,
 )
 
-aplication = web.Application([  # 设置前端网页的访问入口，即路由
+aplication = web.Application([  # Setting the path to log in
 
 # (r"/", LoginHandler),
     (r"/index", MainPageHandler),
@@ -81,8 +76,8 @@ class DecimalEncoder(json.JSONEncoder):
             return float(o)
         super(DecimalEncoder, self).default(o)
 
-if __name__ == '__main__':  # socket服务，提出并响应http请求
+if __name__ == '__main__':  # Socket service，request and respond to http
     http_server = httpserver.HTTPServer(aplication)
-    http_server.listen(8888)  # 访问端口号
+    http_server.listen(8888)  # default port
     ioloop.IOLoop.current().start()
 

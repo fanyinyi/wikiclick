@@ -114,4 +114,4 @@ test/
 wikiclick/
 wikiclick_app/config.py
 kafka/config.txt
-
+.idea/

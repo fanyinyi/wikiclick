@@ -11,35 +11,36 @@ import simplejson as json
 
 class WikiModel(WikiDbConnection):
 
-    # pagerank
-    def searh_log(self, **kwargs):
+    # Page rank
+    def search_log(self, **kwargs):
         try:
-            # 往数据库里添加用户信息。
             self.connect()
-            sql = "select * from test3 where date = %s order by score desc limit 0,%s"
+            sql_query = "select * from test3 where date = %s order by score desc limit 0,%s"
 
-            # 执行sql语句
-            self.cursor.execute(sql, (kwargs['date'], int(kwargs['k'])))
-            # 获取所有记录列表
+            # Executing sql!
+            self.cursor.execute(sql_query, (kwargs['date'], int(kwargs['num_to_show'])))
+
+            # Getting records
             results = self.cursor.fetchall()
-# print(results)
             return results
         except Exception as e:
             print(e)
 
 
-    # realTime
-    def searh_realTime(self, **kwargs):
+    # Traffic Source
+    def search_traffic(self, **kwargs):
         try:
-            # 往数据库里添加用户信息。
             self.connect()
 
+            date_receive = kwargs['date']
+            date_post = date_receive.replace("_", "")
 
-            sql = "select curr_title,sum(n) as score  from intime where from_unixtime(time/1000) between date_add(now(), interval - %s minute) and now() group by curr_title order by score desc limit 0,%s"
+            sql_query ="select prev_title, n from 'rawdata+date_post' where curr_title=%s order by n desc limit %s"
 
-            # 执行sql语句
-            self.cursor.execute(sql, (int(kwargs['minute']), int(kwargs['k'])))
-            # 获取所有记录列表
+            # Executing sql!
+            self.cursor.execute(sql_query, (kwargs['date'], kwargs['page_title'],int(kwargs['k'])))
+
+            # Getting records
             results = self.cursor.fetchall()
 
             return results

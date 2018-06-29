@@ -102,3 +102,16 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Personal files to ignore
+*.swp
+__MACOSX/
+dt/
+es/
+metastore_db/
+rawdata/
+test/
+wikiclick/
+wikiclick_app/config.py
+kafka/config.txt
+

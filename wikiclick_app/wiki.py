@@ -44,7 +44,7 @@ class pageRank(web.RequestHandler):
         if task == 'Traffic_Source':
             model = WikiModel()
             result = model.search_traffic(date=date, num_to_show=int(num_to_show),page_title=page_title)
-            jsonresponse = [{"date":x['date'],"rank":float(x['n']),"topic":x['curr_title']} for x in result]
+            jsonresponse = [{"date":x['date'],"rank":float(x['n']),"topic":x['prev_title']} for x in result]
 
             self.render('pagerank.html', output=jsonresponse)
 

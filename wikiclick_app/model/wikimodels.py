@@ -35,7 +35,7 @@ class WikiModel(WikiDbConnection):
             date_receive = kwargs['date']
             date_post = date_receive.replace("-", "")
 
-            sql_query ="select prev_title, n from rawdata" + date_post + " where curr_title=%s order by n desc limit %s"
+            sql_query ="select date, prev_title, n from rawdata" + date_post + " where curr_title=%s order by n desc limit %s"
 
             # Executing sql!
             self.cursor.execute(sql_query, (kwargs['page_title'],int(kwargs['num_to_show'])))

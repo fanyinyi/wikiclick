@@ -32,6 +32,7 @@ class pageRank(web.RequestHandler):
         task = self.get_argument('task')
         date = self.get_argument('date')
         num_to_show = self.get_argument('num_to_show')
+        page_title = self.get_argument('page_title')
 
         if task == 'Historic_Page_Rank':
             model = WikiModel()

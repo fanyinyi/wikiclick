@@ -35,10 +35,10 @@ class WikiModel(WikiDbConnection):
             date_receive = kwargs['date']
             date_post = date_receive.replace("-", "")
 
-            sql_query ="select prev_title, n from rawdata%s where curr_title=%s order by n desc limit %s"
+            sql_query ="select prev_title, n from rawdata" + date_post + " where curr_title=%s order by n desc limit %s"
 
             # Executing sql!
-            self.cursor.execute(sql_query, (date_post, kwargs['page_title'],int(kwargs['num_to_show'])))
+            self.cursor.execute(sql_query, (kwargs['page_title'],int(kwargs['num_to_show'])))
 
             # Getting records
             results = self.cursor.fetchall()

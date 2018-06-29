@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>wikiclick</string>
+			<key>host</key>
+			<string>sqlforwiki.carf1itkjlds.us-east-1.rds.amazonaws.com</string>
+			<key>kcid</key>
+			<string>-3650597899858626936</string>
+			<key>name</key>
+			<string>local1</string>
+			<key>port</key>
+			<integer>3306</integer>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPTCPIPConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>wikiclick</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>latin1</string>
+			<key>contentFilter</key>
+			<dict/>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGJyhYJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYdJFUkbnVsbNMJCgsMDxJX
+			TlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAF
+			gAdUdHlwZVRyb3dzXxAdU2VsZWN0aW9uRGV0YWlsVHlwZU5TSW5k
+			ZXhTZXTUFwsYGRobHBxaTlNMb2NhdGlvblxOU1JhbmdlQ291bnRY
+			TlNMZW5ndGgQC4AGEAHSHh8gIVokY2xhc3NuYW1lWCRjbGFzc2Vz
+			Wk5TSW5kZXhTZXSiIiNaTlNJbmRleFNldFhOU09iamVjdNIeHyUm
+			XE5TRGljdGlvbmFyeaIlI18QD05TS2V5ZWRBcmNoaXZlctEpKlRk
+			YXRhgAEACAARABoAIwAtADIANwBAAEYATQBVAGAAZwBqAGwAbgBx
+			AHMAdQB3AHwAgQChAKoAtQDCAMsAzQDPANEA1gDhAOoA9QD4AQMB
+			DAERAR4BIQEzATYBOwAAAAAAAAIBAAAAAAAAACsAAAAAAAAAAAAA
+			AAAAAAE9
+			</data>
+			<key>contentSortColIsAsc</key>
+			<true/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {1050, 618}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>
+
+
+
+select * from intime where FROM_UNIXTIME(time, '%Y-%m-%d %H:%i:%S') &gt;= DATE_SUB(NOW(),INTERVAL 5 MINUTE);
+
+
+select curr_title,sum(n) as score from intime where UNIX_TIMESTAMP(time) &gt;= UNIX_TIMESTAMP(DATE_SUB(NOW(),INTERVAL %s MINUTE)) group by curr_title order by score
+
+
+select curr_title,sum(n) as score from intime where UNIX_TIMESTAMP(time) &lt;= UNIX_TIMESTAMP(DATE_SUB(NOW(),INTERVAL 5 MINUTE)) group by curr_title order by score
+
+
+select curr_title,sum(n) as score ,FROM_UNIXTIME(time,'%Y-%m-%d %H:%i:%S') from intime where FROM_UNIXTIME(time,'%Y-%m-%d %H:%i:%S') between date_add(now(), interval - 5 minute) and now()
+
+
+select curr_title  ,FROM_UNIXTIME(time, '%Y-%m-%d') from intime
+
+
+select UNIX_TIMESTAM(now())
+
+</string>
+			<key>table</key>
+			<string>intime</string>
+			<key>view</key>
+			<string>SP_VIEW_CUSTOMQUERY</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>200</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>select curr_title  ,from_unixtime(time, '%Y-%m-%d') from intime</string>
+		<string>select curr_title  ,FROM_UNIXTIME(time, '%Y-%m-%d %H:%i:%S') from intime</string>
+		<string>select curr_title  ,DATE_FORMAT(time,'%Y-%m-%d %T') from intime</string>
+		<string>select curr_title  ,from_unixtime(time) from intime</string>
+		<string>select curr_title,sum(n) as score from intime where UNIX_TIMESTAMP(time) &gt;= UNIX_TIMESTAMP(DATE_SUB(NOW(),INTERVAL %s MINUTE)) group by curr_title order by score
+
+
+select curr_title,sum(n) as score from intime where UNIX_TIMESTAMP(time) &lt;= UNIX_TIMESTAMP(DATE_SUB(NOW(),INTERVAL 5 MINUTE)) group by curr_title order by score
+
+
+select curr_title,sum(n) as score ,FROM_UNIXTIME(time,'%Y-%m-%d %H:%i:%S') from intime where FROM_UNIXTIME(time,'%Y-%m-%d %H:%i:%S') between date_add(now(), interval - 5 minute) and now()
+
+
+select curr_title  ,from_unixtime(time) from intime
+
+
+select UNIX_TIMESTAM(now())</string>
+		<string>select curr_title,sum(n) as score ,from_unixtime(time) from intime</string>
+		<string>select curr_title,sum(n) as score ,FROM_UNIXTIME(time,'%Y-%m-%d %H:%i:%S') from intime</string>
+		<string>select curr_title,sum(n) as score from intime where FROM_UNIXTIME(time,'%Y-%m-%d %H:%i:%S') between date_add(now(), interval - 5 minute) and now()</string>
+		<string>select curr_title,sum(n) as score from intime where FROM_UNIXTIME(unix_timestamp,'%Y-%m-%d %H:%i:%S') between date_add(now(), interval - 5 minute) and now()</string>
+		<string>select curr_title,sum(n) as score from intime where UNIX_TIMESTAMP(time) &gt;= UNIX_TIMESTAMP(DATE_SUB(NOW(),INTERVAL 5 MINUTE)) group by curr_title order by score</string>
+		<string>select curr_title,sum(n) as score from intime where UNIX_TIMESTAMP(time) &gt;= UNIX_TIMESTAMP(DATE_SUB(NOW(),INTERVAL %s MINUTE)) group by curr_title order by score
+
+
+select curr_title,sum(n) as score from intime where UNIX_TIMESTAMP(time) &gt;= UNIX_TIMESTAMP(DATE_SUB(NOW(),INTERVAL 5 MINUTE)) group by curr_title order by score
+
+
+
+select UNIX_TIMESTAM(now())</string>
+		<string>select curr_title,sum(n) as score from intime where UNIX_TIMESTAMP(time) &lt;= UNIX_TIMESTAMP(DATE_SUB(NOW(),INTERVAL 5 MINUTE)) group by curr_title order by score</string>
+		<string>select UNIX_TIMESTAM(now())</string>
+		<string>select curr_title,sum(n) as score from intime where time &gt;= UNIX_TIMESTAMP(DATE_SUB(NOW(),INTERVAL 5 MINUTE)) group by curr_title order by score</string>
+		<string>%s MINUTE)) group by curr_title order by score
+
+
+select curr_title,sum(n) as sco</string>
+		<string>select curr_title,sum(n) as score from intime where UNIX_TIMESTAMP(time) &gt;= UNIX_TIMESTAMP(DATE_SUB(NOW(),INTERVAL %s MINUTE)) group by curr_title order by score
+
+
+select curr_title,sum(n) as score from intime where UNIX_TIMESTAMP(time) &gt;= UNIX_TIMESTAMP(DATE_SUB(NOW(),INTERVAL 5 MINUTE)) group by curr_title order by score
+
+
+
+select DATE_SUB(NOW(),INTERVAL 5 MINUTE)</string>
+		<string>select curr_title,sum(n) as score from intime where UNIX_TIMESTAMP(time) &lt;= UNIX_TIMESTAMP(DATE_SUB(NOW(),INTERVAL %s MINUTE)) group by curr_title order by score</string>
+		<string>select curr_title,sum(n) as score from intime where UNIX_TIMESTAMP(time) &gt;= UNIX_TIMESTAMP(DATE_SUB(NOW(),INTERVAL %s MINUTE)) group by curr_title order by score</string>
+		<string>select curr_title,sum(n) as score from intime where `time` &gt;= UNIX_TIMESTAMP(DATE_SUB(NOW(),INTERVAL 5 MINUTE)) group by curr_title order by score</string>
+		<string>select curr_title,sum(n) from intime where time &gt;= UNIX_TIMESTAMP(DATE_SUB(NOW(),INTERVAL 5 MINUTE)) group by curr_title</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.6.39-log</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>

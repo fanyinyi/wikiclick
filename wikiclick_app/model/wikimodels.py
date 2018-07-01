@@ -1,10 +1,6 @@
 #!/usr/bin/python3
 from model.wikidb import WikiDbConnection
 
-
-# from face import DateEncoder
-
-
 class WikiModel(WikiDbConnection):
 
     # Page rank

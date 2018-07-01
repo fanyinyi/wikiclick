@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*
 from tornado import web, ioloop, httpserver
 from model.wikimodels import  WikiModel
-import base64
 import json
 import os.path
 import datetime
@@ -58,7 +57,7 @@ class pageRank(web.RequestHandler):
         if task == 'The_Most_Popular_Path':
             model = WikiModel()
             result = model.search_path(date=date)
-            #jsonresponse = [{"rank": float(x['n']), "topic": x['prev_title']} for x in result]
+
             self.render('path.html', output=result)
 
 # Setting
@@ -70,7 +69,6 @@ settings = dict(
 
 aplication = web.Application([  # Setting the path to log in
 
-# (r"/", LoginHandler),
     (r"/index", MainPageHandler),
     (r"/pagerank", pageRank)
 

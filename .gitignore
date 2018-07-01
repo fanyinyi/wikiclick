@@ -106,12 +106,10 @@ venv.bak/
 # Personal files to ignore
 *.swp
 __MACOSX/
-dt/
-es/
-metastore_db/
-rawdata/
-test/
-wikiclick/
-wikiclick_app/config.py
-kafka/config.txt
+
+.DS_Store
 .idea/
+kafka/
+config.py
+read.py
+wikiclick_app/model/example.py

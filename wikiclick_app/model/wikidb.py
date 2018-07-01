@@ -1,5 +1,5 @@
 import pymysql
-import config
+from model import config
 class WikiDbConnection:
     def __init__(self):
         self.__conn_dict = config.WIKI_MYSQL_CONN_DICT

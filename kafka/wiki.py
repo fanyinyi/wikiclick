@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*
 from tornado import web, ioloop, httpserver
-from model.wikimodels import  WikiModel
-import base64
+from kafka.wikimodels import  WikiModel
 import json
 import os.path
 import datetime
@@ -47,19 +46,6 @@ class pageRank(web.RequestHandler):
             jsonresponse = [{"date":x['date'],"rank":float(x['n']),"topic":x['prev_title']} for x in result]
 
             self.render('pagerank.html', output=jsonresponse)
-
-        if task == 'Traffic_To':
-            model = WikiModel()
-            result = model.search_trafficto(date=date, num_to_show=int(num_to_show),page_title=page_title)
-            jsonresponse = [{"date":x['date'],"rank":float(x['n']),"topic":x['curr_title']} for x in result]
-
-            self.render('pagerank.html', output=jsonresponse)
-
-        if task == 'The_Most_Popular_Path':
-            model = WikiModel()
-            result = model.search_path(date=date)
-            #jsonresponse = [{"rank": float(x['n']), "topic": x['prev_title']} for x in result]
-            self.render('path.html', output=result)
 
 # Setting
 settings = dict(

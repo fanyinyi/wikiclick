@@ -55,7 +55,7 @@ Download the data to S3 buckets from Wikipedia clickstream dataset and then run:
 ## Demo
 The presentation is available [here](https://drive.google.com/open?id=1PAQzwA9bfwPtiPSksmvw8YSilt3KRuQv)
 <br>
-The video for demo is available [here](https://youtu.be/)
+The video for demo is available [here](https://youtu.be/FnRXnQxDefQ)
 
 
 

@@ -12,7 +12,7 @@ I use the Wikipedia Clickstream dataset. The data can be downloaded from this [l
 The raw data has two formats:
 
 | prev_id    | curr_id    | n    | prev_title                | curr_title |type  |
-| ----------:|-----------:|-----:|------------------------ -:|-----------:|------|
+| ----------:|-----------:|-----:|--------------------------:|-----------:|------|
 | 489033     | 331586     | 59   | Academy_Awards_ceremonies |"Crocodile" |link  |
 
 Or:

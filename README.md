@@ -6,7 +6,7 @@ Clickstream data is very common for most companies if they have their own websit
 
 
 ## Data Source
-I use the Wikipedia Clickstream dataset. The data can be downloaded from this [link](https://figshare.com/articles/Wikipedia_Clickstream). 
+I use the Wikipedia Clickstream dataset. The data can be downloaded from this [link](https://figshare.com/articles/Wikipedia_Clickstream/1305770). 
 
 ## Raw Data 
 The raw data has two formats:

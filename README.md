@@ -53,7 +53,7 @@ Download the data to S3 buckets from Wikipedia clickstream dataset and then run:
 `$ python3 wiki.py&`
 
 ## Demo
-The presentation is available [here](https://drive.google.com/open?id=1PAQzwA9bfwPtiPSksmvw8YSilt3KRuQv)
+The presentation is available [here](https://docs.google.com/presentation/d/1lkSeNTzUgU4D2U-KtZPIB759OwDPlRdGKNvouwHB06k/edit#slide=id.p4)
 <br>
 The video for demo is available [here](https://youtu.be/FnRXnQxDefQ)
 
